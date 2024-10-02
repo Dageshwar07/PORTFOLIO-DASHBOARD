@@ -13,15 +13,21 @@ import { toast } from "react-toastify";
 import { Textarea } from "@/components/ui/textarea";
 import SpecialLoadingButton from "./SpecialLoadingButton";
 import { Link } from "react-router-dom";
-import { Document, Page, pdfjs } from 'react-pdf';
+import { Document, Page, pdfjs } from "react-pdf";
 
 // Configure pdfjs worker
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
 ).toString();
 
 const UpdateProfile = () => {
+  const [resumeFile, setResumeFile] = useState(null); // State to handle uploaded file
+  const resumeHandler = (e) => {
+    const file = e.target.files[0];
+    setResumeFile(file); // Set the uploaded file for preview
+  };
+
   const { user, loading, error, isUpdated, message } = useSelector(
     (state) => state.user
   );
@@ -78,15 +84,15 @@ const UpdateProfile = () => {
       setAvatar(file);
     };
   };
-  const resumeHandler = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setResumePreview(reader.result);
-      setResume(file);
-    };
-  };
+  // const resumeHandler = (e) => {
+  //   const file = e.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => {
+  //     setResumePreview(reader.result);
+  //     setResume(file);
+  //   };
+  // };
 
   const handleUpdateProfile = () => {
     const formData = new FormData();
@@ -101,6 +107,7 @@ const UpdateProfile = () => {
     formData.append("twitterURL", twitterURL);
     formData.append("facebookURL", facebookURL);
     formData.append("avatar", avatar);
+    formData.append("resume", resumeFile || resume); // Use the new file or existing URL
     formData.append("resume", resume);
     dispatch(updateProfile(formData));
   };
@@ -150,40 +157,38 @@ const UpdateProfile = () => {
                 <div className="grid gap-2 pdf w-full sm:w-72">
                   <Label>Resume</Label>
                   <div className="w-full sm:w-72 sm:h-72 border border-gray-350 rounded-2xl">
-                  <Link
-                    to={user && user.resume && user.resume.url}
-                    target="_blank"
-                  >
-                    {/* <img
+                    <Link
+                      to={user && user.resume && user.resume.url}
+                      target="_blank"
+                    >
+                      {/* <img
                       src={resumePreview ? resumePreview : "/avatarHolder.jpg"}
                       alt="avatar"
                       className="w-full  h-auto sm:w-72 sm:h-72 rounded-2xl"
                     /> */}
-                  <Document
-                        key={user.resume.url} // Ensure unique key for the document
-                        file={user.resume.url}
+                      <Document
+                        key={resumeFile ? resumeFile.name : user.resume.url} // Ensure unique key for the document
+                        file={resumeFile || resume} // Show selected file or existing URL
                         onLoadSuccess={onDocumentLoadSuccess}
                         loading={<div>Loading PDF...</div>}
                       >
-                        <Page 
+                        <Page
                           pageNumber={pageNumber}
                           renderTextLayer={false}
-                          renderAnnotationLayer={false} 
-                          width={pageWidth}  // Set the dynamic width of the PDF
-                          scale={1}      
-          className="pdf-page"      // Use scale to control size
-                              // Adjust scale if needed
+                          renderAnnotationLayer={false}
+                          width={pageWidth} // Set the dynamic width of the PDF
+                          scale={1} // Adjust scale if needed
+                          className="pdf-page"
                         />
                       </Document>
+
                       <style jsx>{`
-        .react-pdf__Page__canvas {
-          height: 325px !important; /* Set desired height */
-          width: auto !important;  /* Auto width to maintain aspect ratio */
-        }
-      `}</style>
-
-
-                  </Link>
+                        .react-pdf__Page__canvas {
+                          height: 325px !important; /* Set desired height */
+                          width: auto !important; /* Auto width to maintain aspect ratio */
+                        }
+                      `}</style>
+                    </Link>
                   </div>
 
                   <div className="relative">

@@ -161,13 +161,9 @@ const UpdateProfile = () => {
                       to={user && user.resume && user.resume.url}
                       target="_blank"
                     >
-                      {/* <img
-                      src={resumePreview ? resumePreview : "/avatarHolder.jpg"}
-                      alt="avatar"
-                      className="w-full  h-auto sm:w-72 sm:h-72 rounded-2xl"
-                    /> */}
+                
                       <Document
-                        key={resumeFile ? resumeFile.name : user.resume.url} // Ensure unique key for the document
+                        key={user && user.resume && user.resume.url} // Ensure unique key for the document
                         file={resumeFile || resume} // Show selected file or existing URL
                         onLoadSuccess={onDocumentLoadSuccess}
                         loading={<div>Loading PDF...</div>}

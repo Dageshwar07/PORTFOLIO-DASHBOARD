@@ -25,7 +25,9 @@ const UpdateProfile = () => {
   const { user, loading, error, isUpdated, message } = useSelector(
     (state) => state.user
   );
-
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageWidth, setPageWidth] = useState(350); // Set initial page width
   const [fullName, setFullName] = useState(user && user.fullName);
   const [email, setEmail] = useState(user && user.email);
   const [phone, setPhone] = useState(user && user.phone);
@@ -54,6 +56,16 @@ const UpdateProfile = () => {
   const [resumePreview, setResumePreview] = useState(
     user && user.resume && user.resume.url
   );
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
+  // Function to handle window resize for dynamic PDF scaling
+  const updatePageWidth = () => {
+    const width = window.innerWidth < 768 ? window.innerWidth - 30 : 300;
+    setPageWidth(width);
+  };
 
   const dispatch = useDispatch();
 
@@ -135,18 +147,45 @@ const UpdateProfile = () => {
                     />
                   </div>
                 </div>
-                <div className="grid gap-2 w-full sm:w-72">
+                <div className="grid gap-2 pdf w-full sm:w-72">
                   <Label>Resume</Label>
+                  <div className="w-full sm:w-72 sm:h-72 border border-gray-350 rounded-2xl">
                   <Link
                     to={user && user.resume && user.resume.url}
                     target="_blank"
                   >
-                    <img
+                    {/* <img
                       src={resumePreview ? resumePreview : "/avatarHolder.jpg"}
                       alt="avatar"
                       className="w-full  h-auto sm:w-72 sm:h-72 rounded-2xl"
-                    />
+                    /> */}
+                  <Document
+                        key={user.resume.url} // Ensure unique key for the document
+                        file={user.resume.url}
+                        onLoadSuccess={onDocumentLoadSuccess}
+                        loading={<div>Loading PDF...</div>}
+                      >
+                        <Page 
+                          pageNumber={pageNumber}
+                          renderTextLayer={false}
+                          renderAnnotationLayer={false} 
+                          width={pageWidth}  // Set the dynamic width of the PDF
+                          scale={1}      
+          className="pdf-page"      // Use scale to control size
+                              // Adjust scale if needed
+                        />
+                      </Document>
+                      <style jsx>{`
+        .react-pdf__Page__canvas {
+          height: 325px !important; /* Set desired height */
+          width: auto !important;  /* Auto width to maintain aspect ratio */
+        }
+      `}</style>
+
+
                   </Link>
+                  </div>
+
                   <div className="relative">
                     <input
                       type="file"

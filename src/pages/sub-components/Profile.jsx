@@ -16,7 +16,10 @@ const Profile = () => {
   const { user } = useSelector((state) => state.user);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [pageWidth, setPageWidth] = useState(350); // Set initial page width
+  const [pageWidth, setPageWidth] = useState(300); // Set initial page width
+  const originalWidth = 300; // Original width of the canvas
+  const scale = 1; // Scale to reduce the size
+  const height = 200; 
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -61,28 +64,36 @@ const Profile = () => {
               {user?.resume?.url ? (
                 <div className="grid gap-2 pdf  w-full sm:w-72">
                   <Label>Resume</Label>
-                  <div className="w-full sm:w-72 sm:h-auto border border-gray-300 rounded-2xl">
+                  <div className="w-full sm:w-72 sm:h-72 border border-gray-350 rounded-2xl">
                     <Link
                       to={user?.resume?.url}
                       target="_blank"
                     >
                       <Document
+                      
                         key={user.resume.url} // Ensure unique key for the document
                         file={user.resume.url}
                         onLoadSuccess={onDocumentLoadSuccess}
                         loading={<div>Loading PDF...</div>}
-                        renderAnnotationLayer={false}
      
-
                       >
                        
-               
-                        <Page 
-                          pageNumber={pageNumber}
-                          width={pageWidth}  // Set the dynamic width of the PDF
-                          scale={1}          // Adjust scale if needed
-                        />
+                       <Page 
+                      
+          pageNumber={pageNumber}
+          renderTextLayer={false}
+          renderAnnotationLayer={false} 
+          width={originalWidth}
+          scale={scale}  
+          className="pdf-page"      // Use scale to control size
+        />
                       </Document>
+                      <style jsx>{`
+        .react-pdf__Page__canvas {
+          height: 424px !important; /* Set desired height */
+          width: auto !important;  /* Auto width to maintain aspect ratio */
+        }
+      `}</style>
                     </Link>
                   </div>
                 </div>

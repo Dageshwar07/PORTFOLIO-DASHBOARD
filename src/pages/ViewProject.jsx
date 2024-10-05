@@ -19,7 +19,7 @@ const ViewProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`http://192.168.1.17:8000/api/v1/project/get/${id}`, {
+        .get(`http://192.168.1.19:8000/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
@@ -64,11 +64,7 @@ const ViewProject = () => {
                 <div className="w-full sm:col-span-4">
                   <h1 className="text-2xl font-bold mb-4">{title}</h1>
                   <img
-                    src={
-                      projectBanner
-                        ? projectBanner
-                        : "/avatarHolder.jpg"
-                    }
+                    src={projectBanner ? projectBanner : "/avatarHolder.jpg"}
                     alt="projectBanner"
                     className="w-full h-auto"
                   />

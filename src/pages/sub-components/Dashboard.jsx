@@ -112,23 +112,11 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14 bg-gray-200 z-100">
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-2 xl:grid-cols-2">
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-              <Card className="sm:col-span-2">
-                <CardHeader className="pb-3">
-                  <CardDescription className="max-w-lg text-balance leading-relaxed">
-                    {user.aboutMe}
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                <a href="http://localhost:5174" target="_blank" rel="noopener noreferrer">
-    <Button>Visit Portfolio</Button>
-  </a>
-                </CardFooter>
-              </Card>
-              <Card className="flex flex-col justify-center">
+              <Card className="flex flex-col justify-center bg-yellow-400">
                 <CardHeader className="pb-2">
                   <CardTitle>Projects Completed</CardTitle>
                   <CardTitle className="text-6xl">
@@ -139,7 +127,23 @@ const Dashboard = () => {
                   <Button onClick={gotoMangeProjects}>Manage Projects</Button>
                 </CardFooter>
               </Card>
-              <Card className="flex flex-col justify-center">
+              <Card className="sm:col-span-2 bg-blue-300 ">
+                <CardHeader className="pb-3 h-32">
+                  <CardDescription className="max-w-lg text-balance text-xl leading-relaxed text-black font-semibold  capitalize">
+                    {user.aboutMe}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <a
+                    href="http://localhost:5174"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button >Visit Portfolio</Button>
+                  </a>
+                </CardFooter>
+              </Card>
+              <Card className="flex flex-col justify-center bg-yellow-400">
                 <CardHeader className="pb-2">
                   <CardTitle>Skills</CardTitle>
                   <CardTitle className="text-6xl">

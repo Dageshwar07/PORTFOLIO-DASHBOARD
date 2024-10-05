@@ -51,7 +51,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
     console.log(email);
     const response = await axios.post(
-      "http://192.168.1.17:8000/api/v1/user/password/forgot",
+      "http://192.168.1.19:8000/api/v1/user/password/forgot",
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -74,7 +74,7 @@ export const resetPassword =
     try {
       dispatch(forgotResetPassSlice.actions.resetPasswordRequest());
       const response = await axios.put(
-        ` http://192.168.1.17:8000/api/v1/user/password/reset/${token}`,
+        ` http://192.168.1.19:8000/api/v1/user/password/reset/${token}`,
         { password, confirmPassword },
         {
           withCredentials: true,

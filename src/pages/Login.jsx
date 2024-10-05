@@ -7,8 +7,7 @@ import { useEffect, useState } from "react";
 import { clearAllUserErrors, login } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
 import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
-import { GiEyelashes } from "react-icons/gi";
-import { GiTiredEye } from "react-icons/gi";
+
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 const Login = () => {
@@ -37,7 +36,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(true);
 
   return (
-    <div className="container  mx-auto   flex flex-col lg:flex-row justify-center gap-10 text-gray-500 py-32 ">
+    <div className="container  mx-auto   flex flex-col lg:flex-row justify-center gap-10 text-gray-500 lg:  py-32 ">
       <div className="flex justify-center items-center">
         <img src="/login.png" alt="login" className="h-40 lg:h-72" />
       </div>

@@ -127,180 +127,174 @@ const UpdateProfile = () => {
   }, [dispatch, loading, error, isUpdated]);
 
   return (
-    <>
-      <div className="w-full h-full">
-        <div>
-          <div className="grid w-[100%] gap-6">
-            <div className="grid gap-2">
-              <h1 className="text-3xl font-bold">Update Profile</h1>
-              <p className="text-balance text-muted-foreground">
-                Update Your Profile Here
-              </p>
+    <div className="container h-full px-6">
+      <div className="flex flex-col w-full mx-auto ">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-3xl font-bold py-4 text-center">
+            Update Your Profile Here
+          </h1>
+        </div>
+        
+        <div className="lg:flex   gap-4">
+          <div className="flex items-start py-6 lg:p-0  flex-col  gap-3">
+            <div className="flex flex-col gap-5 h-full w-full items-center">
+              <Label>Profile Image</Label>
+              <img
+                src={avatarPreview ? avatarPreview : "/avatarHolder.jpg"}
+                alt="avatar"
+                className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
+              />
+              <div className="relative">
+                <input
+                  type="file"
+                  onChange={avatarHandler}
+                  className="avatar-update-btn"
+                />
+              </div>
             </div>
-            <div className="grid gap-4">
-              <div className="flex items-start lg:justify-between lg:items-center flex-col lg:flex-row gap-5">
-                <div className="grid gap-2 w-full sm:w-72">
-                  <Label>Profile Image</Label>
-                  <img
-                    src={avatarPreview ? avatarPreview : "/avatarHolder.jpg"}
-                    alt="avatar"
-                    className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
-                  />
-                  <div className="relative">
-                    <input
-                      type="file"
-                      onChange={avatarHandler}
-                      className="avatar-update-btn"
-                    />
-                  </div>
-                </div>
-                <div className="grid gap-2 pdf w-full sm:w-72">
-                  <Label>Resume</Label>
-                  <div className="w-full sm:w-72 sm:h-72 border border-gray-350 rounded-2xl">
-                    <Link
-                      to={user && user.resume && user.resume.url}
-                      target="_blank"
-                    >
-                
-                      <Document
-                        key={user && user.resume && user.resume.url} // Ensure unique key for the document
-                        file={resumeFile || resume} // Show selected file or existing URL
-                        onLoadSuccess={onDocumentLoadSuccess}
-                        loading={<div>Loading PDF...</div>}
-                      >
-                        <Page
-                          pageNumber={pageNumber}
-                          renderTextLayer={false}
-                          renderAnnotationLayer={false}
-                          width={pageWidth} // Set the dynamic width of the PDF
-                          scale={1} // Adjust scale if needed
-                          className="pdf-page"
-                        />
-                      </Document>
-
-                      <style jsx>{`
-                        .react-pdf__Page__canvas {
-                          height: 325px !important; /* Set desired height */
-                          width: auto !important; /* Auto width to maintain aspect ratio */
-                        }
-                      `}</style>
-                    </Link>
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      type="file"
-                      onChange={resumeHandler}
-                      className="avatar-update-btn"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="grid gap-2">
-                <Label>Full Name</Label>
-                <Input
-                  type="text"
-                  className="Your Full Name"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Email</Label>
-                <Input
-                  type="email"
-                  className="Your Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Phone</Label>
-                <Input
-                  type="text"
-                  className="Phone Number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>About Me</Label>
-                <Textarea
-                  className="About Me"
-                  value={aboutMe}
-                  onChange={(e) => setAboutMe(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Portfolio URL</Label>
-                <Input
-                  type="text"
-                  className="Portfolio URL"
-                  value={portfolioURL}
-                  onChange={(e) => setPortfolioURL(e.target.value)}
-                />
-              </div>
-
-              <div className="grid gap-2">
-                <Label>LinkedIn URL</Label>
-                <Input
-                  type="text"
-                  className="LinkedIn URL"
-                  value={linkedInURL}
-                  onChange={(e) => setLinkedInURL(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Github URL</Label>
-                <Input
-                  type="text"
-                  className="Github URL"
-                  value={githubURL}
-                  onChange={(e) => setGithubURL(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Instagram URL</Label>
-                <Input
-                  type="text"
-                  className="Instagram URL"
-                  value={instagramURL}
-                  onChange={(e) => setInstagramURL(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Twitter(X) URL</Label>
-                <Input
-                  type="text"
-                  className="Twitter(X) URL"
-                  value={twitterURL}
-                  onChange={(e) => setTwitterURL(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Facebook URL</Label>
-                <Input
-                  type="text"
-                  className="Facebook URL"
-                  value={facebookURL}
-                  onChange={(e) => setFacebookURL(e.target.value)}
-                />
-              </div>
-              {!loading ? (
-                <Button
-                  onClick={() => handleUpdateProfile()}
-                  className="w-full"
+            <div className="grid gap-2 pdf w-full sm:w-72 items-center">
+              <Label>Resume</Label>
+              <div className="w-full sm:w-72 sm:h-72 border border-gray-350 rounded-2xl items-center">
+                <Link
+                  to={user && user.resume && user.resume.url}
+                  target="_blank"
                 >
-                  Update Profile
-                </Button>
-              ) : (
-                <SpecialLoadingButton content={"Updating"} />
-              )}
+                  <Document
+                    key={user && user.resume && user.resume.url} // Ensure unique key for the document
+                    file={resumeFile || resume} // Show selected file or existing URL
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    loading={<div>Loading PDF...</div>}
+                  >
+                    <Page
+                      pageNumber={pageNumber}
+                      renderTextLayer={false}
+                      renderAnnotationLayer={false}
+                      width={pageWidth} // Set the dynamic width of the PDF
+                      scale={1} // Adjust scale if needed
+                      className="pdf-page"
+                    />
+                  </Document>
+
+                  <style jsx>{`
+                    .react-pdf__Page__canvas {
+                      height: 325px !important; /* Set desired height */
+                      width: auto !important; /* Auto width to maintain aspect ratio */
+                    }
+                  `}</style>
+                </Link>
+              </div>
+
+              <div className="relative ">
+                <input
+                  type="file"
+                  onChange={resumeHandler}
+                  className="avatar-update-btn mt-6  lg:mt-14 mx-auto"
+                />
+              </div>
             </div>
+          </div>
+          <div className="flex flex-col w-full lg:px-20 gap-3">
+            <div className="grid gap-2">
+              <Label>Full Name</Label>
+              <Input
+                type="text"
+                className="Your Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Email</Label>
+              <Input
+                type="email"
+                className="Your Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Phone</Label>
+              <Input
+                type="text"
+                className="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>About Me</Label>
+              <Textarea
+                className="About Me"
+                value={aboutMe}
+                onChange={(e) => setAboutMe(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Portfolio URL</Label>
+              <Input
+                type="text"
+                className="Portfolio URL"
+                value={portfolioURL}
+                onChange={(e) => setPortfolioURL(e.target.value)}
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label>LinkedIn URL</Label>
+              <Input
+                type="text"
+                className="LinkedIn URL"
+                value={linkedInURL}
+                onChange={(e) => setLinkedInURL(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Github URL</Label>
+              <Input
+                type="text"
+                className="Github URL"
+                value={githubURL}
+                onChange={(e) => setGithubURL(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Instagram URL</Label>
+              <Input
+                type="text"
+                className="Instagram URL"
+                value={instagramURL}
+                onChange={(e) => setInstagramURL(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Twitter(X) URL</Label>
+              <Input
+                type="text"
+                className="Twitter(X) URL"
+                value={twitterURL}
+                onChange={(e) => setTwitterURL(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label>Facebook URL</Label>
+              <Input
+                type="text"
+                className="Facebook URL"
+                value={facebookURL}
+                onChange={(e) => setFacebookURL(e.target.value)}
+              />
+            </div>
+            {!loading ? (
+              <Button onClick={() => handleUpdateProfile()} className="w-full">
+                Update Profile
+              </Button>
+            ) : (
+              <SpecialLoadingButton content={"Updating"} />
+            )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

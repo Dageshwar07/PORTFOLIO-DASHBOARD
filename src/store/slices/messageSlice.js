@@ -57,7 +57,7 @@ export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
     const response = await axios.get(
-      "http://192.168.1.17:8000/api/v1/message/getall",
+      "http://192.168.1.19:8000/api/v1/message/getall",
       { withCredentials: true }
     );
     dispatch(
@@ -75,7 +75,7 @@ export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
     const response = await axios.delete(
-      `http://192.168.1.17:8000/api/v1/message/delete/${id}`,
+      `http://192.168.1.19:8000/api/v1/message/delete/${id}`,
       {
         withCredentials: true,
       }

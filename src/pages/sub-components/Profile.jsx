@@ -41,59 +41,50 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="w-full h-full">
-      <div>
-        <div className="grid w-[100%] gap-6">
-          <div className="grid gap-2">
-            <h1 className="text-3xl font-bold">Profile</h1>
-            <p className="text-muted-foreground">Full Profile Preview</p>
-          </div>
-          <div className="grid gap-4">
-            <div className="flex items-start lg:justify-between lg:items-center flex-col lg:flex-row gap-5">
-              {/* Profile Image Section */}
-              <div className="grid gap-2 w-full sm:w-72">
-                <Label>Profile Image</Label>
-                <img
-                  src={user?.avatar?.url}
-                  alt="avatar"
-                  className="w-full h-auto sm:w-72 sm:h-72 rounded-2xl"
-                />
-              </div>
-
-              {/* Resume Section */}
+    <div className="container h-full px-6">
+      <div className="flex flex-col w-full mx-auto ">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-3xl font-bold py-4 text-center">
+            {" "}
+            Full Profile Preview
+          </h1>
+        </div>
+        <div className="lg:flex gap-4 ">
+          <div className="flex items-start py-6 lg:p-0  flex-col lg:flex-row gap-3">
+            {/* Profile Image Section */}
+            <div className="flex flex-col gap-5 h-full w-full">
+              <Label>Profile Image</Label>
+              <img
+                src={user?.avatar?.url}
+                alt="avatar"
+                className="w-full h-auto lg:size-72 rounded-2xl"
+              />
               {user?.resume?.url ? (
                 <div className="grid gap-2 pdf  w-full sm:w-72">
                   <Label>Resume</Label>
-                  <div className="w-full sm:w-72 sm:h-72 border border-gray-350 rounded-2xl">
-                    <Link
-                      to={user?.resume?.url}
-                      target="_blank"
-                    >
+                  <div className="w-full lg:size-72 border border-gray-350 rounded-2xl">
+                    <Link to={user?.resume?.url} target="_blank">
                       <Document
-                      
                         key={user.resume.url} // Ensure unique key for the document
                         file={user.resume.url}
                         onLoadSuccess={onDocumentLoadSuccess}
                         loading={<div>Loading PDF...</div>}
-     
                       >
-                       
-                       <Page 
-                      
-          pageNumber={pageNumber}
-          renderTextLayer={false}
-          renderAnnotationLayer={false} 
-          width={originalWidth}
-          scale={scale}  
-          className="pdf-page"      // Use scale to control size
-        />
+                        <Page
+                          pageNumber={pageNumber}
+                          renderTextLayer={false}
+                          renderAnnotationLayer={false}
+                          width={originalWidth}
+                          scale={scale}
+                          className="pdf-page" // Use scale to control size
+                        />
                       </Document>
-                      <style jsx>{`
-        .react-pdf__Page__canvas {
-          height: 424px !important; /* Set desired height */
-          width: auto !important;  /* Auto width to maintain aspect ratio */
-        }
-      `}</style>
+                      <style className="lg:size-72" jsx>{`
+                        .react-pdf__Page__canvas {
+                           !important; /* Set desired height */
+                          width: auto !important; /* Auto width to maintain aspect ratio */
+                        }
+                      `}</style>
                     </Link>
                   </div>
                 </div>
@@ -102,7 +93,9 @@ const Profile = () => {
               )}
             </div>
 
-            {/* Other Profile Details */}
+            {/* Resume Section */}
+          </div>
+          <div className="flex flex-col w-full lg:px-20 gap-3">
             <div className="grid gap-2">
               <Label>Full Name</Label>
               <Input type="text" defaultValue={user.fullName} disabled />
@@ -115,6 +108,7 @@ const Profile = () => {
               <Label>Phone</Label>
               <Input type="text" defaultValue={user.phone} disabled />
             </div>
+
             <div className="grid gap-2">
               <Label>About Me</Label>
               <Textarea defaultValue={user.aboutMe} disabled />
@@ -144,6 +138,8 @@ const Profile = () => {
               <Input type="text" defaultValue={user.facebookURL} disabled />
             </div>
           </div>
+
+          {/* Other Profile Details */}
         </div>
       </div>
     </div>

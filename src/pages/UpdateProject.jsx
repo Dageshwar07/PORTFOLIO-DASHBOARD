@@ -49,7 +49,7 @@ const UpdateProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`http://192.168.1.17:8000/api/v1/project/get/${id}`, {
+        .get(`http://192.168.1.19:8000/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

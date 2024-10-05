@@ -87,7 +87,7 @@ export const getAllSkills = () => async (dispatch) => {
   dispatch(skillSlice.actions.getAllSkillsRequest());
   try {
     const response = await axios.get(
-      "http://192.168.1.17:8000/api/v1/skill/getall",
+      "http://192.168.1.19:8000/api/v1/skill/getall",
       { withCredentials: true }
     );
     dispatch(skillSlice.actions.getAllSkillsSuccess(response.data.skills));
@@ -103,7 +103,7 @@ export const addNewSkill = (data) => async (dispatch) => {
   dispatch(skillSlice.actions.addNewSkillRequest());
   try {
     const response = await axios.post(
-      "http://192.168.1.17:8000/api/v1/skill/add",
+      "http://192.168.1.19:8000/api/v1/skill/add",
       data,
       {
         withCredentials: true,
@@ -123,7 +123,7 @@ export const updateSkill = (id, proficiency) => async (dispatch) => {
   dispatch(skillSlice.actions.updateSkillRequest());
   try {
     const response = await axios.put(
-      `http://192.168.1.17:8000/api/v1/skill/update/${id}`,
+      `http://192.168.1.19:8000/api/v1/skill/update/${id}`,
       { proficiency },
       {
         withCredentials: true,
@@ -141,7 +141,7 @@ export const deleteSkill = (id) => async (dispatch) => {
   dispatch(skillSlice.actions.deleteSkillRequest());
   try {
     const response = await axios.delete(
-      `http://192.168.1.17:8000/api/v1/skill/delete/${id}`,
+      `http://192.168.1.19:8000/api/v1/skill/delete/${id}`,
       {
         withCredentials: true,
       }

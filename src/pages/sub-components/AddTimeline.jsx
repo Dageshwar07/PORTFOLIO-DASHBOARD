@@ -52,7 +52,7 @@ const AddTimeline = () => {
         >
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="font-semibold leading-7 text-gray-900 text-3xl text-center">
+              <h2 className="text-center text-gray-600 font-bold text-xl lg:text-3xl">
                 ADD A NEW TIMELINE
               </h2>
               <div className="mt-10 flex flex-col gap-5">

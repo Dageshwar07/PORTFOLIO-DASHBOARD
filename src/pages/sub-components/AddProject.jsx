@@ -74,20 +74,21 @@ const AddProject = () => {
           className="w-[100%] px-5 md:w-[1000px]"
         >
           <div className="space-y-12">
-            <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="font-semibold leading-7 text-gray-900 text-3xl">
+            <div className=" border-gray-900/10 pb-12">
+              <h2 className="text-center text-gray-600 font-bold text-3xl">
                 ADD NEW PROJECT
               </h2>
+
               <div className="mt-10 flex flex-col gap-5">
                 <div className="w-full sm:col-span-4">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Project Title
                   </label>
                   <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-200">
                       <input
                         type="text"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        className="shadow-lg block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-600 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="MERN STACK PORTFOLIO"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -95,119 +96,6 @@ const AddProject = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Description
-                  </label>
-                  <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <Textarea
-                        placeholder="Feature 1. Feature 2. Feature 3."
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Technologies Used In This Project
-                  </label>
-                  <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <Textarea
-                        placeholder="HTML, CSS, JAVASCRIPT, REACT"
-                        value={technologies}
-                        onChange={(e) => setTechnologies(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Stack
-                  </label>
-                  <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <Select
-                        value={stack}
-                        onValueChange={(selectedValue) =>
-                          setStack(selectedValue)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Project Stack" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Full Stack">Full Stack</SelectItem>
-                          <SelectItem value="Mern">MERN</SelectItem>
-                          <SelectItem value="Mean">MEAN</SelectItem>
-                          <SelectItem value="Next.JS">NEXT.JS</SelectItem>
-                          <SelectItem value="React.JS">REACT.JS</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Deployed
-                  </label>
-                  <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
-                      <Select
-                        value={deployed}
-                        onValueChange={(selectedValue) =>
-                          setDeployed(selectedValue)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Is this project deployed?" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Yes">Yes</SelectItem>
-                          <SelectItem value="No">No</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Github Repository Link
-                  </label>
-                  <div className="mt-2">
-                    <div className="relative flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
-                      <input
-                        type="text"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="Github Repository Link"
-                        value={gitRepoLink}
-                        onChange={(e) => setGitRepoLink(e.target.value)}
-                      />
-                      <Link className="absolute w-5 h-5 left-1 top-2" />
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
-                    Project Link
-                  </label>
-                  <div className="mt-2">
-                    <div className="relative flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
-                      <input
-                        type="text"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="Github Repository Link"
-                        value={projectLink}
-                        onChange={(e) => setProjectLink(e.target.value)}
-                      />
-                      <Link className="absolute w-5 h-5 left-1 top-2" />
-                    </div>
-                  </div>
-                </div>
-
                 <div className="w-full col-span-full">
                   <label
                     htmlFor="cover-photo"
@@ -215,7 +103,7 @@ const AddProject = () => {
                   >
                     Project Banner
                   </label>
-                  <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                  <div className="mt-2 flex justify-center rounded-lg border border-gray-300 shadow-xl px-6 py-10">
                     <div className="text-center">
                       {projectBannerPreview ? (
                         <img
@@ -243,7 +131,7 @@ const AddProject = () => {
                       <div className="mt-4 flex text-sm leading-6 text-gray-600">
                         <label
                           htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
                           <span>Upload a file</span>
                           <input
@@ -262,24 +150,143 @@ const AddProject = () => {
                     </div>
                   </div>
                 </div>
+                <div className="w-full lg:flex justify-center gap-6">
+                  <div className="w-full sm:col-span-4">
+                    <label className="block text-sm font-medium leading-6 text-gray-900">
+                      Github Repository Link
+                    </label>
+                    <div className="mt-2">
+                      <div className="relative flex rounded-md shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-200 ">
+                        <input
+                          type="text"
+                          className="block flex-1 border-0 bg-transparent py-1.5 pl-8 text-:ring-gray-200 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                          placeholder="Github Repository Link"
+                          value={gitRepoLink}
+                          onChange={(e) => setGitRepoLink(e.target.value)}
+                        />
+                        <Link className="absolute w-5 h-5 left-1 top-2" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full sm:col-span-4">
+                    <label className="block text-sm font-medium leading-6 text-gray-900">
+                      Project Link
+                    </label>
+                    <div className="mt-2">
+                      <div className="relative flex rounded-md  ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-gray-200 shadow-lg ">
+                        <input
+                          type="text"
+                          className="block flex-1 border-0 bg-transparent py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                          placeholder="Github Repository Link"
+                          value={projectLink}
+                          onChange={(e) => setProjectLink(e.target.value)}
+                        />
+                        <Link className="absolute w-5 h-5 left-1 top-2" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full sm:col-span-4">
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                    Description
+                  </label>
+                  <div className="mt-2">
+                    <div className="flex rounded-md shadow-lg ring-1  ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                      <Textarea
+                        placeholder="Feature 1. Feature 2. Feature 3."
+                        className="bg-gray-200 border border-gray-300"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full sm:col-span-4">
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                    Technologies Used In This Project
+                  </label>
+                  <div className="mt-2">
+                    <div className="flex rounded-md shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                      <Textarea
+                        placeholder="HTML, CSS, JAVASCRIPT, REACT"
+                        value={technologies}
+                        className="bg-gray-200 border border-gray-300"
+                        onChange={(e) => setTechnologies(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full lg:flex justify-center items-end gap-6">
+                  <div className="w-full sm:col-span-4">
+                    <label className="block text-sm font-medium leading-6 text-gray-900">
+                      Stack
+                    </label>
+                    <div className="mt-2">
+                      <div className="flex rounded-md shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                        <Select
+                          value={stack}
+                          className="bg-gray-200 border border-gray-300"
+                          onValueChange={(selectedValue) =>
+                            setStack(selectedValue)
+                          }
+                        >
+                          <SelectTrigger className="bg-gray-200 border border-gray-300">
+                            <SelectValue placeholder="Select Project Stack" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-gray-200 border border-gray-300">
+                            <SelectItem value="Full Stack">
+                              Full Stack
+                            </SelectItem>
+                            <SelectItem value="Mern">MERN</SelectItem>
+                            <SelectItem value="Mean">MEAN</SelectItem>
+                            <SelectItem value="Next.JS">NEXT.JS</SelectItem>
+                            <SelectItem value="React.JS">REACT.JS</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full sm:col-span-4">
+                    <label className="block text-sm font-medium leading-6 text-gray-900">
+                      Deployed
+                    </label>
+                    <div className="mt-2">
+                      <div className="flex rounded-md shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                        <Select
+                          value={deployed}
+                          onValueChange={(selectedValue) =>
+                            setDeployed(selectedValue)
+                          }
+                        >
+                          <SelectTrigger className="bg-gray-200 border border-gray-300">
+                            <SelectValue placeholder="Is this project deployed?" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-gray-200 border border-gray-300">
+                            <SelectItem value="Yes">Yes</SelectItem>
+                            <SelectItem value="No">No</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className=" flex items-center justify-end gap-x-6 shadow-lg">
+                    {loading ? (
+                      <SpecialLoadingButton
+                        content={"ADDING NEW PROJECT"}
+                        width={"w-56"}
+                      />
+                    ) : (
+                      <button
+                        type="submit"
+                        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-56"
+                      >
+                        Add Project
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-6 flex items-center justify-end gap-x-6">
-            {loading ? (
-              <SpecialLoadingButton
-                content={"ADDING NEW PROJECT"}
-                width={"w-56"}
-              />
-            ) : (
-              <button
-                type="submit"
-                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-56"
-              >
-                Add Project
-              </button>
-            )}
           </div>
         </form>
       </div>

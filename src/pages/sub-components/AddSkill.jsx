@@ -50,26 +50,26 @@ const AddSkill = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center min-h-[100vh] sm:gap-4 sm:py-4 sm:pl-14">
+      <div className="flex justify-center items-center py-0  lg:py-20   sm:gap-4">
         <form
-          className="w-[100%] px-5 md:w-[650px]"
+          className="w-full lg:w-4/6  px-5"
           onSubmit={handleAddNewSkill}
         >
-          <div className="space-y-12">
-            <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="font-semibold leading-7 text-gray-900 text-3xl text-center">
-                ADD A NEW SKILL
+          <div className="">
+            <div className="border-b border-gray-900/10 ">
+              <h2 className="text-center text-gray-600 font-bold text-xl lg:text-3xl">
+      ADD A NEW SKILL
               </h2>
-              <div className="mt-10 flex flex-col gap-5">
+              <div className="lg:mt-10 flex flex-col gap-5">
                 <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                  <label className="block text-m font-medium leading-6 text-gray-900">
                     Title
                   </label>
                   <div className="mt-2">
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                       <input
                         type="text"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        className="shadow-lg pl-3 block flex-1 border-0 bg-transparent py-1.5 text-sm text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="React.JS"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -78,14 +78,14 @@ const AddSkill = () => {
                   </div>
                 </div>
                 <div className="w-full sm:col-span-4">
-                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                  <label className="block text-m font-medium leading-6 text-gray-900">
                     Proficiency
                   </label>
                   <div className="mt-2">
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                       <input
                         type="number"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        className="shadow-lg pl-3 block flex-1 border-0 bg-transparent py-1.5 text-sm text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="30"
                         value={proficiency}
                         onChange={(e) => setProficiency(e.target.value)}
@@ -95,12 +95,10 @@ const AddSkill = () => {
                 </div>
 
                 <div className="w-full col-span-full">
-                  <label
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
                     Skill Svg
                   </label>
-                  <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                  <div className="shadow-lg mt-2 flex justify-center rounded-lg border  border-gray-300 px-6 py-10">
                     <div className="text-center">
                       {svgPreview ? (
                         <img
@@ -123,7 +121,7 @@ const AddSkill = () => {
                         </svg>
                       )}
 
-                      <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                      <div className="mt-4 flex text-sm leading-6 text-gray-600 my-10">
                         <label
                           htmlFor="file-upload"
                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
@@ -149,7 +147,7 @@ const AddSkill = () => {
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-end gap-x-6">
+          <div className="shadow-lg mt-6 flex items-center justify-end gap-x-6 ">
             {!loading ? (
               <Button
                 type="submit"
@@ -159,7 +157,7 @@ const AddSkill = () => {
                 Add Skill
               </Button>
             ) : (
-               <SpecialLoadingButton content={"Adding New Skill"} />
+              <SpecialLoadingButton content={"Adding New Skill"} />
             )}
           </div>
         </form>

@@ -37,56 +37,49 @@ const Profile = () => {
     }
   }, [dispatch, isAuthenticated, error, message]);
   return (
-    <>
-      <div className="w-full h-full">
-        <div>
-          <div className="grid w-[100%] gap-6">
-            <div className="grid gap-2">
-              <h1 className="text-3xl font-bold">Update Password</h1>
-              <p className="text-balance text-muted-foreground">
-                Update Your Password
-              </p>
-            </div>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label>Current Password</Label>
-                <Input
-                  type="password"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>New Password</Label>
-                <Input
-                  type="password"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>Confirm New Password</Label>
-                <Input
-                  type="password"
-                  value={confirmNewPassword}
-                  onChange={(e) => setConfirmNewPassword(e.target.value)}
-                />
-              </div>
-              {!loading ? (
-                <Button
-                  onClick={() => handleUpdatePassword()}
-                  className="w-full"
-                >
-                  Update Password
-                </Button>
-              ) : (
-                <SpecialLoadingButton content={"Updating Password"} />
-              )}
-            </div>
-          </div>
+    <div className="container h-full px-6 lg:px-20 ">
+      <div className="grid gap-2">
+        <h1 className="text-3xl font-bold py-4 text-center">Update Password</h1>
+      </div>
+      <div className="grid gap-4">
+        <div className="grid gap-2">
+          <Label>Current Password</Label>
+          <Input
+            type="password"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label>New Password</Label>
+          <Input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label>Confirm New Password</Label>
+          <Input
+            type="password"
+            value={confirmNewPassword}
+            onChange={(e) => setConfirmNewPassword(e.target.value)}
+          />
+        </div>
+        <div className="flex gap-4 flex-col lg:flex-row">
+          {!loading ? (
+            <Button onClick={() => handleUpdatePassword()} className="w-full lg:w-3/6">
+              Update Password
+            </Button>
+          ) : (
+            <SpecialLoadingButton content={"Updating Password"} />
+          )}
+          <Button type="reset" className="w-full lg:w-3/6">
+            Reset Password
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

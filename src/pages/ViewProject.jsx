@@ -3,6 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import apiUrl from "@/api/api";
 
 const ViewProject = () => {
   const [title, setTitle] = useState("");
@@ -19,7 +20,7 @@ const ViewProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`http://192.168.1.19:8000/api/v1/project/get/${id}`, {
+        .get(`${apiUrl}/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

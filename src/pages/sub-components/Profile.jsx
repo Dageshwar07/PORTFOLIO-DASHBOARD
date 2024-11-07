@@ -49,7 +49,7 @@ const Profile = () => {
             Full Profile Preview
           </h1>
         </div>
-        <div className="lg:flex gap-4 ">
+        <div className="lg:flex gap-20 ">
           <div className="flex items-start py-6 lg:p-0  flex-col lg:flex-row gap-3">
             {/* Profile Image Section */}
             <div className="flex flex-col gap-5 h-full w-full">
@@ -95,7 +95,7 @@ const Profile = () => {
 
             {/* Resume Section */}
           </div>
-          <div className="flex flex-col w-full lg:px-20 gap-3">
+          <div className="flex flex-col w-full gap-4">
             <div className="grid gap-2">
               <Label>Full Name</Label>
               <Input type="text" defaultValue={user.fullName} disabled />

@@ -51,17 +51,19 @@ const Messages = () => {
 
   return (
     <>
-      <div className="min-h-[100vh] sm:gap-4 sm:py-4 sm:pl-20">
-        <Tabs>
+      
+        <Tabs className="px-4 container lg:px-32">
           <TabsContent>
             <Card>
               <CardHeader className="flex gap-4 sm:justify-between sm:flex-row sm:items-center">
-                <CardTitle>Messages</CardTitle>
-                <Button className="w-fit" onClick={handleReturnToDashboard}>
-                  Return to Dashboard
-                </Button>
+                <div className="flex w-full justify-between items-center">
+                  <CardTitle>Messages</CardTitle>
+                  <Button className="w-fit" onClick={handleReturnToDashboard}>
+                    Return to Dashboard
+                  </Button>
+                </div>
               </CardHeader>
-              <CardContent className="grid sm:grid-cols-2 gap-4">
+              <CardContent className="grid sm:grid-cols-2 gap-4 overflow-y-auto">
                 {messages && messages.length > 0 ? (
                   messages.map((element) => {
                     return (
@@ -79,7 +81,7 @@ const Messages = () => {
                           {element.message}
                         </CardDescription>
                         <CardFooter className="justify-end">
-                          {loading && (messageId === element._id) ? (
+                          {loading && messageId === element._id ? (
                             <SpecialLoadingButton
                               content={"Deleting"}
                               width={"w-32"}
@@ -105,7 +107,7 @@ const Messages = () => {
             </Card>
           </TabsContent>
         </Tabs>
-      </div>
+     
     </>
   );
 };

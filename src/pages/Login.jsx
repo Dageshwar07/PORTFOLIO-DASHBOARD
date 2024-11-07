@@ -36,7 +36,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(true);
 
   return (
-    <div className="container  mx-auto   flex flex-col lg:flex-row justify-center gap-10 text-gray-500 lg:  py-32 ">
+    <div className="container  mx-auto  h-screen  flex flex-col lg:flex-row justify-center gap-10 text-gray-500 lg: pt-10 lg:py-32 ">
       <div className="flex justify-center items-center">
         <img src="/login.png" alt="login" className="h-40 lg:h-72" />
       </div>
@@ -83,12 +83,20 @@ const Login = () => {
                 {!showPassword ? <IoMdEye /> : <IoMdEyeOff />}
               </div>
             </div>
-            <Link
-              to="/password/forgot"
-              className="ml-auto inline-block text-sm underline"
-            >
-              Forgot your password?
-            </Link>
+            <div className="flex justify-center ">
+              <Link
+                to="/password/forgot"
+                className="ml-auto inline-block text-sm underline"
+              >
+                Forgot your password?
+              </Link>
+              <Link
+                to="/register"
+                className="ml-auto inline-block text-sm underline"
+              >
+                I have no account ?
+              </Link>
+            </div>
 
             <Button
               onClick={() => handleLogin(email, password)}

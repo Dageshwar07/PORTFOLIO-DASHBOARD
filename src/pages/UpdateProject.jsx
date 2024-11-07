@@ -20,6 +20,7 @@ import {
   updateProject,
 } from "@/store/slices/projectSlice";
 import { Button } from "@/components/ui/button";
+import apiUrl from "@/api/api";
 
 const UpdateProject = () => {
   const [title, setTitle] = useState("");
@@ -49,7 +50,7 @@ const UpdateProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`http://192.168.1.19:8000/api/v1/project/get/${id}`, {
+        .get(`${apiUrl}/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

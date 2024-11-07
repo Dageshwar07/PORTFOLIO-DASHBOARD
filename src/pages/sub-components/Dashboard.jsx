@@ -112,52 +112,52 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14 bg-gray-200 z-100">
+      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14 bg-gray-300 z-100">
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-2 xl:grid-cols-2">
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-              <Card className="flex flex-col justify-center bg-yellow-400">
+              <Card className="flex flex-col justify-center gap-4 bg-yellow-400">
                 <CardHeader className="pb-2">
                   <CardTitle>Projects Completed</CardTitle>
-                  <CardTitle className="text-6xl">
-                    {projects && projects.length}
-                  </CardTitle>
                 </CardHeader>
                 <CardFooter>
+                  <CardTitle className="text-6xl flex justify-between w-full items-end ">
+                    {projects && projects.length}
+                  </CardTitle>
                   <Button onClick={gotoMangeProjects}>Manage Projects</Button>
                 </CardFooter>
               </Card>
-              <Card className="sm:col-span-2 bg-blue-300 ">
-                <CardHeader className="pb-3 h-32">
-                  <CardDescription className="max-w-lg text-balance text-xl leading-relaxed text-black font-semibold  capitalize">
+              <Card className="sm:col-span-2 bg-blue-300 flex flex-col justify-around ">
+                <CardHeader className="pb-3">
+                  <CardDescription className="max-w-lg text-balance text-xl leading-relaxed text-black font-semibold  capitalize ">
                     {user.aboutMe}
                   </CardDescription>
                 </CardHeader>
-                <CardFooter>
+                <CardFooter className="flex items-end justify-end">
                   <a
-                    href="http://localhost:5174"
+                    href="http://host:5174"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button >Visit Portfolio</Button>
+                    <Button>Visit Portfolio</Button>
                   </a>
                 </CardFooter>
               </Card>
-              <Card className="flex flex-col justify-center bg-yellow-400">
-                <CardHeader className="pb-2">
+              <Card className="flex flex-col justify-center gap-4 bg-yellow-400">
+                <CardHeader className="pb-2 ">
                   <CardTitle>Skills</CardTitle>
+                </CardHeader>
+                <CardFooter className="flex w-full items-center justify-between">
                   <CardTitle className="text-6xl">
                     {skills && skills.length}
                   </CardTitle>
-                </CardHeader>
-                <CardFooter>
                   <Button onClick={gotoMangeSkills}>Manage Skill</Button>
                 </CardFooter>
               </Card>
             </div>
             <Tabs>
               <TabsContent>
-                <Card>
+                <Card className="">
                   <CardHeader className="px-7">
                     <CardTitle>Projects</CardTitle>
                   </CardHeader>
@@ -165,7 +165,7 @@ const Dashboard = () => {
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead>Title</TableHead>
+                          <TableHead className="">Title</TableHead>
                           <TableHead className="hidden md:table-cell">
                             Stack
                           </TableHead>
@@ -182,11 +182,11 @@ const Dashboard = () => {
                         {projects && projects.length > 0 ? (
                           projects.map((element) => {
                             return (
-                              <TableRow className="bg-accent" key={element._id}>
+                              <TableRow className="" key={element._id}>
                                 <TableCell>
-                                  <div className="font-medium">
+                                 
                                     {element.title}
-                                  </div>
+                              
                                 </TableCell>
                                 <TableCell className="hidden md:table-cell">
                                   {element.stack}

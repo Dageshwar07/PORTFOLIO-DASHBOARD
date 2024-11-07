@@ -1,3 +1,4 @@
+import apiUrl from "@/api/api";
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -74,7 +75,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
   );
   try {
     const response = await axios.get(
-      "http://192.168.1.19:8000/api/v1/softwareapplication/getall",
+      `${apiUrl}/api/v1/softwareapplication/getall`,
       { withCredentials: true }
     );
     dispatch(
@@ -98,7 +99,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
   );
   try {
     const response = await axios.post(
-      "http://192.168.1.19:8000/api/v1/softwareapplication/add",
+      `${apiUrl}/api/v1/softwareapplication/add`,
       data,
       {
         withCredentials: true,
@@ -126,7 +127,7 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
   );
   try {
     const response = await axios.delete(
-      `http://192.168.1.19:8000/api/v1/softwareapplication/delete/${id}`,
+      `${apiUrl}/api/v1/softwareapplication/delete/${id}`,
       {
         withCredentials: true,
       }

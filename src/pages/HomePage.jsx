@@ -30,6 +30,7 @@ import { logout } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
 import Messages from "./sub-components/Messages";
 import AddTimeline from "./sub-components/AddTimeline";
+import { HiMenuAlt4 } from "react-icons/hi";
 
 const HomePage = () => {
   const [active, setActive] = useState("");
@@ -50,22 +51,25 @@ const HomePage = () => {
     }
   }, [isAuthenticated]);
   return (
-    <div className="flex bg-gray-200 relative flex-col">
-      <div className="fixed z-40 top-0  flex  h-20  bg-gray-200 shadow-xl lg:shadow-none  lg:bg-transparent lg gap-5">
+    <div className="flex bg-gray-300 relative flex-col">
+      <div className="fixed z-40 top-0  flex  h-20  bg-gray-300 shadow-xl lg:shadow-none  lg:bg-transparent lg gap-5">
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant="outline" className="mt-5 ml-5">
-              <PanelLeft className="h-5 w-5" />
+              <HiMenuAlt4 className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="sm:max-w-xs ">
-            <nav className="grid gap-6 text-lg font-medium">
+            <nav className="grid gap-6 text-lg font-medium ">
               <Link
                 className={`group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base`}
               >
-                <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-                <span className="sr-only">Acme Inc</span>
+                <img
+                  src={user && user.avatar && user.avatar.url}
+                  alt="avatar"
+                  className="rounded-full"
+                />
               </Link>
               <Link
                 href="#"
@@ -157,24 +161,24 @@ const HomePage = () => {
             </nav>
           </SheetContent>
         </Sheet>
-        <div className="flex lg:hidden   items-center gap-4 md:grow-0 lg:mx-96 lg:pl-20 lg:bg-gray-200 w-full ">
+        <div className="flex lg:hidden   items-center gap-4 md:grow-0 lg:mx-96 lg:pl-20bg-gray-300 w-full ">
           <img
             src={user && user.avatar && user.avatar.url}
             alt="avatar"
-            className="size-20 rounded-full max-[900px]:hidden border-2 border-gray-500"
+            className="size-20 rounded-full max-[900px]:hidden "
           />
           <h1 className="text-4xl font-bold text-gray-600 max-[900px]:text-2xl">
             Welcome back, {user.fullName}
           </h1>
         </div>
       </div>
-      <div className="h-screen w-full  lg:container overflow-y-auto pb-20">
+      <div className="h-screen w-full  lg:container overflow-y-auto pb-20 ">
         <header className="flex  items-center gap-4 bo  rder-b  px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 max-[900px]:h-[100px]">
-          <div className="hidden  lg:flex px-20 gap-20  items-center  md:grow-0 justify-center  lg:bg-gray-200 w-full py-6 ">
+          <div className="hidden  lg:flex px-20 gap-20  items-center  md:grow-0 justify-center  lg:bg-gray-300 w-full py-6 ">
             <img
               src={user && user.avatar && user.avatar.url}
               alt="avatar"
-              className="size-20 rounded-full max-[900px]:hidden border-2 border-gray-500"
+              className="size-20 rounded-full max-[900px]:hidden "
             />
             <h1 className="text-4xl font-bold text-gray-600 max-[900px]:text-2xl uppercase">
               Welcome back , {user.fullName}

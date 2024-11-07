@@ -36,16 +36,21 @@ const ForgotPassword = () => {
   }, [dispatch, isAuthenticated, error, loading]);
 
   return (
-    <div className="w-full lg:grid lg:min-h-[100vh] lg:grid-cols-2 xl:min-h-[100vh]">
-      <div className=" min-h-[100vh] flex items-center justify-center py-12">
-        <div className="mx-auto grid w-[350px] gap-6">
-          <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Forgot Password</h1>
-            <p className="text-balance text-muted-foreground">
+    <div className="container  mx-auto   flex flex-col lg:flex-row justify-center gap-10 text-gray-500 lg: pt-10 lg:py-32 ">
+      <div className="flex justify-center items-center ">
+        <img src="/forgot.png" alt="login" className="h-40 lg:h-72" />
+      </div>
+      <div className=" flex items-center justify-center  md:mx-auto lg:mx-0 rounded-xl p-6 lg:p-12 md:p-16 my-auto md:w-96 lg:w-auto shadow-2xl">
+        <div className="flex flex-col">
+          <div className="flex flex-col gap-2 text-center">
+            <h1 className="text-3xl lg:text-4xl font-bold text-gray-600 ">
+              Forgot Password
+            </h1>
+            <p className="pb-2">
               Enter your email to request for reset password
             </p>
           </div>
-          <div className="grid gap-4">
+          <div className="grid gap-4 lg:py-10">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -79,9 +84,6 @@ const ForgotPassword = () => {
             )}
           </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center bg-muted">
-        <img src="/forgot.png" alt="login" />
       </div>
     </div>
   );

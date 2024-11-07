@@ -68,14 +68,14 @@ const AddProject = () => {
 
   return (
     <>
-      <div className="flex mt-7 justify-center items-center min-h-[100vh] sm:gap-4 sm:py-4 sm:pl-14">
+      <div className="flex justify-center items-center sm:gap-4">
         <form
           onSubmit={handleAddNewProject}
-          className="w-[100%] px-5 md:w-[1000px]"
+          className="w-[100%] px-5 md:container md:px-32"
         >
-          <div className="space-y-12">
-            <div className=" border-gray-900/10 pb-12">
-              <h2 className="text-center text-gray-600 font-bold text-3xl">
+          <div className="">
+            <div className=" border-gray-900/10 ">
+              <h2 className="text-center text-gray-600 font-bold text-xl  lg:text-3xl">
                 ADD NEW PROJECT
               </h2>
 
@@ -194,7 +194,7 @@ const AddProject = () => {
                     <div className="flex rounded-md shadow-lg ring-1  ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                       <Textarea
                         placeholder="Feature 1. Feature 2. Feature 3."
-                        className="bg-gray-200 border border-gray-300"
+                        className="bg-gray-300 border border-gray-300"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                       />
@@ -210,13 +210,13 @@ const AddProject = () => {
                       <Textarea
                         placeholder="HTML, CSS, JAVASCRIPT, REACT"
                         value={technologies}
-                        className="bg-gray-200 border border-gray-300"
+                        className="bg-gray-300 border border-gray-300"
                         onChange={(e) => setTechnologies(e.target.value)}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="w-full lg:flex justify-center items-end gap-6">
+                <div className="w-full flex flex-col lg:flex-row items-end  gap-6">
                   <div className="w-full sm:col-span-4">
                     <label className="block text-sm font-medium leading-6 text-gray-900">
                       Stack
@@ -225,15 +225,15 @@ const AddProject = () => {
                       <div className="flex rounded-md shadow-lg ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                         <Select
                           value={stack}
-                          className="bg-gray-200 border border-gray-300"
+                          className="bg-gray-300 border border-gray-300"
                           onValueChange={(selectedValue) =>
                             setStack(selectedValue)
                           }
                         >
-                          <SelectTrigger className="bg-gray-200 border border-gray-300">
+                          <SelectTrigger className="bg-gray-300 border border-gray-300">
                             <SelectValue placeholder="Select Project Stack" />
                           </SelectTrigger>
-                          <SelectContent className="bg-gray-200 border border-gray-300">
+                          <SelectContent className="bg-gray-300 border border-gray-300">
                             <SelectItem value="Full Stack">
                               Full Stack
                             </SelectItem>
@@ -258,10 +258,10 @@ const AddProject = () => {
                             setDeployed(selectedValue)
                           }
                         >
-                          <SelectTrigger className="bg-gray-200 border border-gray-300">
+                          <SelectTrigger className="bg-gray-300 border border-gray-300">
                             <SelectValue placeholder="Is this project deployed?" />
                           </SelectTrigger>
-                          <SelectContent className="bg-gray-200 border border-gray-300">
+                          <SelectContent className="bg-gray-300 border border-gray-300">
                             <SelectItem value="Yes">Yes</SelectItem>
                             <SelectItem value="No">No</SelectItem>
                           </SelectContent>
@@ -269,16 +269,16 @@ const AddProject = () => {
                       </div>
                     </div>
                   </div>
-                  <div className=" flex items-center justify-end gap-x-6 shadow-lg">
+                  <div className=" w-full">
                     {loading ? (
                       <SpecialLoadingButton
                         content={"ADDING NEW PROJECT"}
-                        width={"w-56"}
+                        width={"w-full"}
                       />
                     ) : (
                       <button
                         type="submit"
-                        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-56"
+                        className="w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
                         Add Project
                       </button>

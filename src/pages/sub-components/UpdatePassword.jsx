@@ -43,32 +43,38 @@ const Profile = () => {
       </div>
       <div className="grid gap-4">
         <div className="grid gap-2">
-          <Label>Current Password</Label>
+          <Label className="pl-3">Current Password</Label>
           <Input
             type="password"
             value={currentPassword}
+            placeholder="Enter your old password"
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
         </div>
         <div className="grid gap-2">
-          <Label>New Password</Label>
+          <Label className="pl-3">New Password</Label>
           <Input
             type="password"
             value={newPassword}
+            placeholder="Enter your new password"
             onChange={(e) => setNewPassword(e.target.value)}
           />
         </div>
         <div className="grid gap-2">
-          <Label>Confirm New Password</Label>
+          <Label className="pl-3">Confirm New Password</Label>
           <Input
             type="password"
             value={confirmNewPassword}
+            placeholder="Enter your confirm password"
             onChange={(e) => setConfirmNewPassword(e.target.value)}
           />
         </div>
         <div className="flex gap-4 flex-col lg:flex-row">
           {!loading ? (
-            <Button onClick={() => handleUpdatePassword()} className="w-full lg:w-3/6">
+            <Button
+              onClick={() => handleUpdatePassword()}
+              className="w-full lg:w-3/6"
+            >
               Update Password
             </Button>
           ) : (

@@ -135,7 +135,7 @@ const UpdateProfile = () => {
           </h1>
         </div>
         
-        <div className="lg:flex   gap-4">
+        <div className="lg:flex   gap-20">
           <div className="flex items-start py-6 lg:p-0  flex-col  gap-3">
             <div className="flex flex-col gap-5 h-full w-full items-center">
               <Label>Profile Image</Label>
@@ -193,7 +193,7 @@ const UpdateProfile = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-full lg:px-20 gap-3">
+          <div className="flex flex-col w-full  gap-3">
             <div className="grid gap-2">
               <Label>Full Name</Label>
               <Input
